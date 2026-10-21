@@ -1,53 +1,23 @@
 import React from 'react';
-import { Cpu, Layout, Server, Database, Wrench } from 'lucide-react';
+import { Cpu, Layout, Server, Database, ShieldCheck, Briefcase, Zap } from 'lucide-react';
 
-export default function TechStack() {
-  const stackCategories = [
-    {
-      title: 'Frontend & UI',
-      icon: <Layout size={20} />,
-      items: [
-        { name: 'React (v18 / v19)', level: 'Avançado' },
-        { name: 'JavaScript (ES6+) & TypeScript', level: 'Sólido' },
-        { name: 'HTML5 Semântico & CSS3 Moderno', level: 'Avançado' },
-        { name: 'Single Page Apps (SPA) & Vite', level: 'Avançado' },
-        { name: 'UI Responsiva & Acessibilidade', level: 'Sólido' },
-      ],
-    },
-    {
-      title: 'Backend & Sistemas',
-      icon: <Server size={20} />,
-      items: [
-        { name: 'Node.js & Express', level: 'Sólido' },
-        { name: 'C & C++ (Programação de Sistemas)', level: 'Competente' },
-        { name: 'Python (Scripts & Algoritmos)', level: 'Sólido' },
-        { name: 'Arquitetura de REST APIs', level: 'Sólido' },
-        { name: 'Concorrência & Processos', level: 'Competente' },
-      ],
-    },
-    {
-      title: 'Bases de Dados & Modelação',
-      icon: <Database size={20} />,
-      items: [
-        { name: 'PostgreSQL & MySQL', level: 'Sólido' },
-        { name: 'SQL & Modelação Relacional', level: 'Avançado' },
-        { name: 'Otimização de Índices e Queries', level: 'Sólido' },
-        { name: 'Transações & Propriedades ACID', level: 'Sólido' },
-        { name: 'Bases de Dados NoSQL / SQLite', level: 'Competente' },
-      ],
-    },
-    {
-      title: 'Ferramentas & Metodologias',
-      icon: <Wrench size={20} />,
-      items: [
-        { name: 'Git & Fluxos de Controlo de Versões', level: 'Avançado' },
-        { name: 'Linux (Bash / Shell Scripting)', level: 'Sólido' },
-        { name: 'Docker & Contentorização Básica', level: 'Competente' },
-        { name: 'Metodologias Ágeis (Scrum/Kanban)', level: 'Sólido' },
-        { name: 'Testes Unitários & Debugging', level: 'Sólido' },
-      ],
-    },
-  ];
+export default function TechStack({ categories = [] }) {
+  const getIcon = (iconName) => {
+    switch (iconName) {
+      case 'Layout':
+        return <Layout size={20} />;
+      case 'Server':
+        return <Server size={20} />;
+      case 'Database':
+        return <Database size={20} />;
+      case 'ShieldCheck':
+        return <ShieldCheck size={20} />;
+      case 'Briefcase':
+        return <Briefcase size={20} />;
+      default:
+        return <Zap size={20} />;
+    }
+  };
 
   return (
     <section id="stack" className="stack-section">
@@ -59,23 +29,38 @@ export default function TechStack() {
           </div>
           <h2 className="section-title">Stack Tecnológica</h2>
           <p className="section-subtitle">
-            Tecnologias, ambientes e linguagens com que trabalho no dia a dia para desenvolver sistemas resilientes.
+            Conjunto de linguagens, frameworks, ferramentas de mensageria, sistemas e ambientes de trabalho utilizados nos meus projetos.
           </p>
         </div>
 
         <div className="stack-categories-grid">
-          {stackCategories.map((category, idx) => (
+          {categories.map((category, idx) => (
             <div key={idx} className="stack-box glass-card">
               <div className="stack-box-header">
-                <div className="stack-box-icon">{category.icon}</div>
+                <div
+                  className="stack-box-icon"
+                  style={{
+                    color: category.color,
+                    background: `${category.color}15`,
+                    borderColor: `${category.color}35`,
+                  }}
+                >
+                  {getIcon(category.icon)}
+                </div>
                 <h3>{category.title}</h3>
               </div>
 
               <div className="stack-items-list">
                 {category.items.map((item, i) => (
                   <div key={i} className="stack-item">
-                    <span className="stack-item-name">{item.name}</span>
-                    <span className="stack-item-badge">{item.level}</span>
+                    <span
+                      className="stack-bullet"
+                      style={{
+                        backgroundColor: category.color,
+                        boxShadow: `0 0 8px ${category.color}`,
+                      }}
+                    ></span>
+                    <span className="stack-item-name">{item}</span>
                   </div>
                 ))}
               </div>

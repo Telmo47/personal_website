@@ -73,7 +73,7 @@ export default function App() {
         />
 
         {/* Stack Tecnológica */}
-        <TechStack />
+        <TechStack categories={portfolioData.techStack} />
 
         {/* Percurso Académico & Estado Atual */}
         <AcademicJourney timeline={portfolioData.academicTimeline} />

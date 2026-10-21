@@ -143,6 +143,43 @@ export const portfolioData = {
     },
   ],
 
+  techStack: [
+    {
+      title: "Frontend & UI",
+      icon: "Layout",
+      color: "#00f2fe",
+      items: ["React", "Vite", "HTML/CSS Moderno"],
+    },
+    {
+      title: "Backend & Arquitetura",
+      icon: "Server",
+      color: "#9d4edd",
+      items: ["Java", "C#", ".NET", "Express.js / Node.js", "Python"],
+    },
+    {
+      title: "Base de Dados & Mensageria",
+      icon: "Database",
+      color: "#38ef7d",
+      items: ["SQL (PostgreSQL)", "RabbitMQ", "Mosquitto (MQTT) / HiveMQ"],
+    },
+    {
+      title: "Infraestrutura, Redes & Segurança",
+      icon: "ShieldCheck",
+      color: "#f59e0b",
+      items: ["Linux", "Docker", "Nmap", "Wireshark"],
+    },
+    {
+      title: "Soluções Empresariais & Metodologias",
+      icon: "Briefcase",
+      color: "#60a5fa",
+      items: [
+        "Microsoft Power Platform (Power Apps, Power BI)",
+        "Metodologias Ágeis (Scrum)",
+        "Git / Controlo de Versões",
+      ],
+    },
+  ],
+
   academicTimeline: [
     {
       period: "1º Ano — Fundações da Computação",
