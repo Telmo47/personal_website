@@ -1,122 +1,98 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import { portfolioData } from './data/portfolioData';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import RpgStats from './components/RpgStats';
+import ProjectsPipeline from './components/ProjectsPipeline';
+import TechStack from './components/TechStack';
+import AcademicJourney from './components/AcademicJourney';
+import DevNotes from './components/DevNotes';
+import Contact from './components/Contact';
+import ProjectModal from './components/ProjectModal';
+import Footer from './components/Footer';
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [toastMessage, setToastMessage] = useState('');
+
+  const handleDownloadCv = () => {
+    // Tenta abrir/descarregar o ficheiro de CV
+    const link = document.createElement('a');
+    link.href = portfolioData.personal.cvPdfPath;
+    link.download = 'Curriculo_Engenheiro_Informatico.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // Feedback visual
+    setToastMessage('A transferir o currículo (PDF)... Para colocar o teu PDF real, basta copiar para public/cv.pdf');
+    setTimeout(() => {
+      setToastMessage('');
+    }, 5000);
+  };
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
+    <div className="portfolio-app">
+      {/* Toast Notification */}
+      {toastMessage && (
+        <div
+          style={{
+            position: 'fixed',
+            bottom: '24px',
+            right: '24px',
+            background: 'rgba(14, 20, 36, 0.95)',
+            border: '1px solid var(--accent-cyan)',
+            color: '#fff',
+            padding: '14px 20px',
+            borderRadius: '12px',
+            boxShadow: '0 10px 30px rgba(0,0,0,0.7), 0 0 15px rgba(0,242,254,0.3)',
+            zIndex: 1000,
+            fontSize: '0.88rem',
+            maxWidth: '380px',
+            lineHeight: '1.4',
+          }}
         >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+          {toastMessage}
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      )}
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      {/* Barra de Navegação */}
+      <Navbar onDownloadCv={handleDownloadCv} />
+
+      <main>
+        {/* Página Principal / Hero & Hub de Navegação */}
+        <Hero data={portfolioData} onDownloadCv={handleDownloadCv} />
+
+        {/* Ficha de Habilidades estilo RPG / Videojogo */}
+        <RpgStats stats={portfolioData.rpgStats} />
+
+        {/* Pipeline de Projetos (Concluídos | Em Curso | No Radar) */}
+        <ProjectsPipeline
+          projects={portfolioData.projects}
+          onSelectProject={(project) => setSelectedProject(project)}
+        />
+
+        {/* Stack Tecnológica */}
+        <TechStack />
+
+        {/* Percurso Académico & Estado Atual */}
+        <AcademicJourney timeline={portfolioData.academicTimeline} />
+
+        {/* Notas Técnicas / Dev Blog */}
+        <DevNotes notes={portfolioData.devNotes} />
+
+        {/* Contacto & Download do CV */}
+        <Contact personal={portfolioData.personal} onDownloadCv={handleDownloadCv} />
+      </main>
+
+      {/* Modal de Detalhes do Projeto */}
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
+
+      {/* Rodapé */}
+      <Footer />
+    </div>
+  );
 }
-
-export default App
