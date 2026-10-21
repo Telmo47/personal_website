@@ -1,34 +1,43 @@
 import React, { useState } from 'react';
-import { portfolioData } from './data/portfolioData';
+import { portfolioData, uiStrings } from './data/portfolioData';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import FocusAreas from './components/FocusAreas';
 import ProjectsPipeline from './components/ProjectsPipeline';
 import TechStack from './components/TechStack';
 import AcademicJourney from './components/AcademicJourney';
-import DevNotes from './components/DevNotes';
 import Contact from './components/Contact';
 import ProjectModal from './components/ProjectModal';
 import Footer from './components/Footer';
 
 export default function App() {
+  const [lang, setLang] = useState(() => {
+    return localStorage.getItem('portfolio_lang') || 'pt';
+  });
   const [selectedProject, setSelectedProject] = useState(null);
   const [toastMessage, setToastMessage] = useState('');
 
+  const handleLanguageChange = (newLang) => {
+    setLang(newLang);
+    localStorage.setItem('portfolio_lang', newLang);
+  };
+
+  const currentData = portfolioData[lang] || portfolioData.pt;
+  const t = uiStrings[lang] || uiStrings.pt;
+
   const handleDownloadCv = () => {
-    // Tenta abrir/descarregar o ficheiro de CV
     const link = document.createElement('a');
-    link.href = portfolioData.personal.cvPdfPath;
-    link.download = 'Curriculo_Engenheiro_Informatico.pdf';
+    link.href = currentData.personal.cvPdfPath;
+    link.download = lang === 'pt' ? 'Curriculo_Telmo_Botelho.pdf' : 'CV_Telmo_Botelho.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
 
     // Feedback visual
-    setToastMessage('A transferir o currículo (PDF)... Para colocar o teu PDF real, basta copiar para public/cv.pdf');
+    setToastMessage(t.toast.downloadingCv);
     setTimeout(() => {
       setToastMessage('');
-    }, 5000);
+    }, 4000);
   };
 
   return (
@@ -57,42 +66,64 @@ export default function App() {
       )}
 
       {/* Barra de Navegação */}
-      <Navbar onDownloadCv={handleDownloadCv} />
+      <Navbar
+        lang={lang}
+        onLanguageChange={handleLanguageChange}
+        onDownloadCv={handleDownloadCv}
+        t={t}
+      />
 
       <main>
         {/* Página Principal / Hero & Hub de Navegação */}
-        <Hero data={portfolioData} onDownloadCv={handleDownloadCv} />
+        <Hero
+          data={currentData}
+          lang={lang}
+          onDownloadCv={handleDownloadCv}
+          t={t}
+        />
 
         {/* Áreas de Especialização & Domínio Técnico */}
-        <FocusAreas areas={portfolioData.focusAreas} />
+        <FocusAreas
+          areas={currentData.focusAreas}
+          t={t}
+        />
 
         {/* Pipeline de Projetos (Concluídos | Em Curso | No Radar) */}
         <ProjectsPipeline
-          projects={portfolioData.projects}
+          projects={currentData.projects}
           onSelectProject={(project) => setSelectedProject(project)}
+          t={t}
         />
 
         {/* Stack Tecnológica */}
-        <TechStack categories={portfolioData.techStack} />
+        <TechStack
+          categories={currentData.techStack}
+          t={t}
+        />
 
         {/* Percurso Académico & Estado Atual */}
-        <AcademicJourney timeline={portfolioData.academicTimeline} />
-
-        {/* Notas Técnicas / Dev Blog (Oculto temporariamente para adição posterior) */}
-        {/* <DevNotes notes={portfolioData.devNotes} /> */}
+        <AcademicJourney
+          timeline={currentData.academicTimeline}
+          t={t}
+        />
 
         {/* Contacto & Download do CV */}
-        <Contact personal={portfolioData.personal} onDownloadCv={handleDownloadCv} />
+        <Contact
+          personal={currentData.personal}
+          onDownloadCv={handleDownloadCv}
+          t={t}
+        />
       </main>
 
       {/* Modal de Detalhes do Projeto */}
       <ProjectModal
         project={selectedProject}
         onClose={() => setSelectedProject(null)}
+        t={t}
       />
 
       {/* Rodapé */}
-      <Footer />
+      <Footer t={t} />
     </div>
   );
 }

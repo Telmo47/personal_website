@@ -1,25 +1,24 @@
 import React from 'react';
-import { Mail, FileDown, Send, MessageSquare } from 'lucide-react';
+import { Mail, FileDown, Send } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 
-export default function Contact({ personal, onDownloadCv }) {
+export default function Contact({ personal, onDownloadCv, t }) {
   return (
     <section id="contact" className="contact-section">
       <div className="container">
         <div className="contact-box">
           <div className="section-badge" style={{ marginBottom: '16px' }}>
             <Mail size={16} />
-            <span>Contacto Direto</span>
+            <span>{t.contact.badge}</span>
           </div>
 
           <h2 className="contact-heading">
-            Pronto para impulsionar o teu próximo <br />
-            <span className="gradient-text">projeto de engenharia?</span>
+            {t.contact.headingLine1} <br />
+            <span className="gradient-text">{t.contact.headingLine2}</span>
           </h2>
 
           <p className="contact-lead">
-            Estou ativamente disponível para oportunidades de emprego (Full-Time, Remoto, Híbrido ou Presencial).
-            Sente-te à vontade para descarregar o meu currículo ou entrar em contacto direto por email ou LinkedIn.
+            {t.contact.lead}
           </p>
 
           <div className="contact-actions-row">
@@ -29,7 +28,7 @@ export default function Contact({ personal, onDownloadCv }) {
               onClick={onDownloadCv}
             >
               <FileDown size={18} />
-              <span>Descarregar CV (PDF)</span>
+              <span>{t.contact.btnCv}</span>
             </button>
 
             <a
@@ -37,7 +36,7 @@ export default function Contact({ personal, onDownloadCv }) {
               className="btn btn-secondary"
             >
               <Send size={18} />
-              <span>Enviar Mensagem por Email</span>
+              <span>{t.contact.btnEmail}</span>
             </a>
           </div>
 

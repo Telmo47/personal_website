@@ -1,18 +1,18 @@
 import React from 'react';
-import { GraduationCap, Award, CheckCircle2, Clock } from 'lucide-react';
+import { GraduationCap, Award } from 'lucide-react';
 
-export default function AcademicJourney({ timeline }) {
+export default function AcademicJourney({ timeline, t }) {
   return (
     <section id="academic" className="academic-section">
       <div className="container">
         <div className="section-header">
           <div className="section-badge">
             <GraduationCap size={16} />
-            <span>Formação Curricular</span>
+            <span>{t.academic.badge}</span>
           </div>
-          <h2 className="section-title">Percurso Académico</h2>
+          <h2 className="section-title">{t.academic.title}</h2>
           <p className="section-subtitle">
-            A jornada em Engenharia Informática: fundamentos teóricos rigorosos aliados à prática intensiva de projeto.
+            {t.academic.subtitle}
           </p>
         </div>
 

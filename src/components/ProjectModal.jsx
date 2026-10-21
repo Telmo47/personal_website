@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { X, ExternalLink, CheckCircle, Tag } from 'lucide-react';
+import { X, ExternalLink, CheckCircle } from 'lucide-react';
 import { GithubIcon } from './Icons';
 
-export default function ProjectModal({ project, onClose }) {
+export default function ProjectModal({ project, onClose, t }) {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
@@ -22,18 +22,18 @@ export default function ProjectModal({ project, onClose }) {
           type="button"
           className="modal-close-btn"
           onClick={onClose}
-          aria-label="Fechar modal"
+          aria-label={t.modal.close}
         >
           <X size={18} />
         </button>
 
         <h3 className="modal-title">{project.title}</h3>
-        <p className="modal-subtitle">{project.tagline}</p>
+        {project.tagline && <p className="modal-subtitle">{project.tagline}</p>}
 
         <div className="modal-body">
           <p>{project.description}</p>
 
-          <h4 className="modal-section-title">Destaques de Engenharia & Arquitetura</h4>
+          <h4 className="modal-section-title">{t.modal.engineeringHighlights}</h4>
           <ul className="modal-list">
             {project.highlights.map((item, idx) => (
               <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
@@ -43,7 +43,7 @@ export default function ProjectModal({ project, onClose }) {
             ))}
           </ul>
 
-          <h4 className="modal-section-title">Tecnologias Utilizadas</h4>
+          <h4 className="modal-section-title">{t.modal.technologiesUsed}</h4>
           <div className="project-tags" style={{ marginBottom: '24px' }}>
             {project.tags.map((tag, idx) => (
               <span key={idx} className="tag-pill">
@@ -61,11 +61,11 @@ export default function ProjectModal({ project, onClose }) {
                 className="btn btn-secondary"
               >
                 <GithubIcon size={16} />
-                <span>Ver Código no GitHub</span>
+                <span>{t.modal.viewCode}</span>
               </a>
             ) : (
               <span className="mono-tag" style={{ color: 'var(--text-muted)', fontSize: '0.84rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                🔒 Projeto sem repositório público (especificação sob consulta)
+                {t.modal.noPublicRepo}
               </span>
             )}
             {project.demoUrl && (
@@ -76,7 +76,7 @@ export default function ProjectModal({ project, onClose }) {
                 className="btn btn-primary"
               >
                 <ExternalLink size={16} />
-                <span>Aceder à Demonstração</span>
+                <span>{t.modal.viewDemo}</span>
               </a>
             )}
           </div>

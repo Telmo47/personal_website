@@ -1,7 +1,7 @@
 import React from 'react';
 import { Sparkles, Cpu, Layers, ShieldCheck, Zap } from 'lucide-react';
 
-export default function FocusAreas({ areas }) {
+export default function FocusAreas({ areas, t }) {
   const getIcon = (iconName) => {
     switch (iconName) {
       case 'Sparkles':
@@ -23,11 +23,11 @@ export default function FocusAreas({ areas }) {
         <div className="section-header">
           <div className="section-badge">
             <Sparkles size={16} />
-            <span>Domínio & Competências Técnicas</span>
+            <span>{t.focusAreas.badge}</span>
           </div>
-          <h2 className="section-title">Áreas de Especialização</h2>
+          <h2 className="section-title">{t.focusAreas.title}</h2>
           <p className="section-subtitle">
-            Pilares de competência em engenharia de software: da integração de Inteligência Artificial à computação distribuída, arquitetura de sistemas e segurança.
+            {t.focusAreas.subtitle}
           </p>
         </div>
 
@@ -52,7 +52,7 @@ export default function FocusAreas({ areas }) {
               <p className="focus-card-desc">{area.description}</p>
 
               <div className="focus-tech-block">
-                <span className="focus-tech-label">Tecnologias & Ferramentas:</span>
+                <span className="focus-tech-label">{t.focusAreas.techLabel}</span>
                 <div className="focus-tech-tags">
                   {area.technologies.map((tech, idx) => (
                     <span

@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Gamepad2,
   FolderGit2,
   Cpu,
   GraduationCap,
@@ -8,11 +7,10 @@ import {
   FileDown,
   Sparkles,
   Clock,
-  ArrowRight,
   Code2,
 } from 'lucide-react';
 
-export default function Hero({ data, onDownloadCv }) {
+export default function Hero({ data, onDownloadCv, t }) {
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) {
@@ -38,13 +36,12 @@ export default function Hero({ data, onDownloadCv }) {
             </div>
 
             <h1 className="hero-title">
-              Construindo software <br />
-              <span className="gradient-text">robusto, elegante e escalável</span>
+              {t.hero.titleLine1} <br />
+              <span className="gradient-text">{t.hero.titleLine2}</span>
             </h1>
 
             <p className="hero-description">
-              Olá! Sou o <strong>Telmo Botelho</strong>, Engenheiro Informático. Foco-me em desenvolvimento de software moderno,
-              arquiteturas limpas e resolução de problemas técnicos complexos. Formação quase 100% concluída, com prontidão imediata para integrar equipas de engenharia.
+              {data.personal.heroDescription}
             </p>
 
             <div className="hero-actions">
@@ -54,7 +51,7 @@ export default function Hero({ data, onDownloadCv }) {
                 onClick={() => scrollTo('projects')}
               >
                 <FolderGit2 size={18} />
-                <span>Explorar Projetos</span>
+                <span>{t.hero.btnProjects}</span>
               </button>
               <button
                 type="button"
@@ -62,7 +59,7 @@ export default function Hero({ data, onDownloadCv }) {
                 onClick={onDownloadCv}
               >
                 <FileDown size={18} />
-                <span>Obter Currículo</span>
+                <span>{t.hero.btnCv}</span>
               </button>
               <button
                 type="button"
@@ -70,7 +67,7 @@ export default function Hero({ data, onDownloadCv }) {
                 onClick={() => scrollTo('contact')}
               >
                 <Mail size={18} />
-                <span>Entrar em Contacto</span>
+                <span>{t.hero.btnContact}</span>
               </button>
             </div>
 
@@ -78,7 +75,7 @@ export default function Hero({ data, onDownloadCv }) {
             <div className="hero-quickhub">
               <div className="quickhub-label">
                 <Sparkles size={14} color="#00f2fe" />
-                <span>Acesso Rápido às Secções</span>
+                <span>{t.hero.quickHubTitle}</span>
               </div>
 
               <div className="quickhub-grid">
@@ -91,8 +88,8 @@ export default function Hero({ data, onDownloadCv }) {
                     <Sparkles size={20} />
                   </div>
                   <div className="quickhub-text">
-                    <span className="quickhub-title">Áreas de Especialização</span>
-                    <span className="quickhub-desc">IA, Sistemas, Ágil & Redes</span>
+                    <span className="quickhub-title">{t.hero.quickHub[0].title}</span>
+                    <span className="quickhub-desc">{t.hero.quickHub[0].desc}</span>
                   </div>
                 </button>
 
@@ -105,8 +102,8 @@ export default function Hero({ data, onDownloadCv }) {
                     <FolderGit2 size={20} />
                   </div>
                   <div className="quickhub-text">
-                    <span className="quickhub-title">Pipeline de Projetos</span>
-                    <span className="quickhub-desc">Feitos, Em Curso e Backlog</span>
+                    <span className="quickhub-title">{t.hero.quickHub[1].title}</span>
+                    <span className="quickhub-desc">{t.hero.quickHub[1].desc}</span>
                   </div>
                 </button>
 
@@ -119,8 +116,8 @@ export default function Hero({ data, onDownloadCv }) {
                     <GraduationCap size={20} />
                   </div>
                   <div className="quickhub-text">
-                    <span className="quickhub-title">Percurso Académico</span>
-                    <span className="quickhub-desc">Licenciatura & Estado Atual</span>
+                    <span className="quickhub-title">{t.hero.quickHub[2].title}</span>
+                    <span className="quickhub-desc">{t.hero.quickHub[2].desc}</span>
                   </div>
                 </button>
 
@@ -133,8 +130,8 @@ export default function Hero({ data, onDownloadCv }) {
                     <Cpu size={20} />
                   </div>
                   <div className="quickhub-text">
-                    <span className="quickhub-title">Stack Tecnológica</span>
-                    <span className="quickhub-desc">Linguagens, Frameworks & Ferramentas</span>
+                    <span className="quickhub-title">{t.hero.quickHub[3].title}</span>
+                    <span className="quickhub-desc">{t.hero.quickHub[3].desc}</span>
                   </div>
                 </button>
 
@@ -147,8 +144,8 @@ export default function Hero({ data, onDownloadCv }) {
                     <Mail size={20} />
                   </div>
                   <div className="quickhub-text">
-                    <span className="quickhub-title">Contacto & CV</span>
-                    <span className="quickhub-desc">Links diretos e PDF</span>
+                    <span className="quickhub-title">{t.hero.quickHub[4].title}</span>
+                    <span className="quickhub-desc">{t.hero.quickHub[4].desc}</span>
                   </div>
                 </button>
               </div>
@@ -170,15 +167,15 @@ export default function Hero({ data, onDownloadCv }) {
             <div className="hero-stats-mini">
               <div className="mini-stat-item">
                 <div className="mini-stat-num">99%</div>
-                <div className="mini-stat-lbl">Curso Concluído</div>
+                <div className="mini-stat-lbl">{t.hero.statDegree}</div>
               </div>
               <div className="mini-stat-item">
                 <div className="mini-stat-num">{data.projects.length}</div>
-                <div className="mini-stat-lbl">Projetos no Hub</div>
+                <div className="mini-stat-lbl">{t.hero.statProjects}</div>
               </div>
               <div className="mini-stat-item">
                 <div className="mini-stat-num">100%</div>
-                <div className="mini-stat-lbl">Disponibilidade</div>
+                <div className="mini-stat-lbl">{t.hero.statAvailability}</div>
               </div>
             </div>
 
@@ -188,7 +185,7 @@ export default function Hero({ data, onDownloadCv }) {
                 <Clock size={20} />
               </div>
               <div className="academic-notice-content">
-                <h4>Status Curricular: Apenas à Espera da Nota Final</h4>
+                <h4>{t.hero.academicCardTitle}</h4>
                 <p>
                   {data.personal.status.academicDetail}
                 </p>

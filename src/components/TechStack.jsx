@@ -1,7 +1,7 @@
 import React from 'react';
 import { Cpu, Layout, Server, Database, ShieldCheck, Briefcase, Zap } from 'lucide-react';
 
-export default function TechStack({ categories = [] }) {
+export default function TechStack({ categories = [], t }) {
   const getIcon = (iconName) => {
     switch (iconName) {
       case 'Layout':
@@ -25,11 +25,11 @@ export default function TechStack({ categories = [] }) {
         <div className="section-header">
           <div className="section-badge">
             <Cpu size={16} />
-            <span>Ferramentas & Tecnologias</span>
+            <span>{t.techStack.badge}</span>
           </div>
-          <h2 className="section-title">Stack Tecnológica</h2>
+          <h2 className="section-title">{t.techStack.title}</h2>
           <p className="section-subtitle">
-            Conjunto de linguagens, frameworks, ferramentas de mensageria, sistemas e ambientes de trabalho utilizados nos meus projetos.
+            {t.techStack.subtitle}
           </p>
         </div>
 

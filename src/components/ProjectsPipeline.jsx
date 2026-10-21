@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import { GithubIcon } from './Icons';
 
-export default function ProjectsPipeline({ projects, onSelectProject }) {
+export default function ProjectsPipeline({ projects, onSelectProject, t }) {
   const [filter, setFilter] = useState('all');
 
   const filteredProjects =
@@ -57,11 +57,11 @@ export default function ProjectsPipeline({ projects, onSelectProject }) {
         <div className="section-header">
           <div className="section-badge">
             <FolderGit2 size={16} />
-            <span>Showcase & Projetos Reais</span>
+            <span>{t.projects.badge}</span>
           </div>
-          <h2 className="section-title">Pipeline de Projetos</h2>
+          <h2 className="section-title">{t.projects.title}</h2>
           <p className="section-subtitle">
-            Projetos práticos com foco em IA, sistemas distribuídos, arquitetura MVC e soluções IoT ciberfísicas.
+            {t.projects.subtitle}
           </p>
         </div>
 
@@ -73,8 +73,7 @@ export default function ProjectsPipeline({ projects, onSelectProject }) {
             onClick={() => setFilter('all')}
           >
             <Layers size={16} />
-            <span>Todos os Projetos</span>
-            <span className="tab-count">{countByCat.all}</span>
+            <span>{t.projects.filterAll} ({countByCat.all})</span>
           </button>
 
           <button
@@ -82,8 +81,8 @@ export default function ProjectsPipeline({ projects, onSelectProject }) {
             className={`filter-tab-btn ${filter === 'completed' ? 'active' : ''}`}
             onClick={() => setFilter('completed')}
           >
-            <CheckCircle2 size={16} color="#34d399" />
-            <span>Concluídos ({countByCat.completed})</span>
+            <CheckCircle2 size={16} color="#00f2fe" />
+            <span>{t.projects.filterCompleted} ({countByCat.completed})</span>
           </button>
 
           <button
@@ -91,8 +90,8 @@ export default function ProjectsPipeline({ projects, onSelectProject }) {
             className={`filter-tab-btn ${filter === 'in_progress' ? 'active' : ''}`}
             onClick={() => setFilter('in_progress')}
           >
-            <Clock size={16} color="#fbbf24" />
-            <span>Em Desenvolvimento ({countByCat.in_progress})</span>
+            <Clock size={16} color="#f59e0b" />
+            <span>{t.projects.filterInProgress} ({countByCat.in_progress})</span>
           </button>
 
           {countByCat.backlog > 0 && (
@@ -102,7 +101,7 @@ export default function ProjectsPipeline({ projects, onSelectProject }) {
               onClick={() => setFilter('backlog')}
             >
               <Compass size={16} color="#a5b4fc" />
-              <span>No Radar ({countByCat.backlog})</span>
+              <span>{t.projects.filterBacklog} ({countByCat.backlog})</span>
             </button>
           )}
         </div>
@@ -138,20 +137,20 @@ export default function ProjectsPipeline({ projects, onSelectProject }) {
                         target="_blank"
                         rel="noreferrer"
                         className="icon-link"
-                        title="Ver Código no GitHub"
+                        title={t.projects.btnCode}
                       >
                         <GithubIcon size={16} />
-                        <span>Código</span>
+                        <span>{t.projects.btnCode}</span>
                       </a>
                     ) : (
                       <button
                         type="button"
                         className="btn-architecture"
                         onClick={() => onSelectProject(project)}
-                        title="Ver Arquitetura e Detalhes do Sistema"
+                        title={t.projects.btnArchitecture}
                       >
                         <Layers size={15} />
-                        <span>Ver Arquitetura</span>
+                        <span>{t.projects.btnArchitecture}</span>
                       </button>
                     )}
 
@@ -161,10 +160,10 @@ export default function ProjectsPipeline({ projects, onSelectProject }) {
                         target="_blank"
                         rel="noreferrer"
                         className="icon-link"
-                        title="Ver Demonstração ao Vivo"
+                        title={t.projects.btnDemo}
                       >
                         <ExternalLink size={16} />
-                        <span>Demo</span>
+                        <span>{t.projects.btnDemo}</span>
                       </a>
                     )}
                   </div>
@@ -176,7 +175,7 @@ export default function ProjectsPipeline({ projects, onSelectProject }) {
                       onClick={() => onSelectProject(project)}
                     >
                       <Info size={15} />
-                      <span>Detalhes</span>
+                      <span>{t.projects.btnDetails}</span>
                     </button>
                   )}
                 </div>

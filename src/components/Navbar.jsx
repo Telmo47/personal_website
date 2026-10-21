@@ -1,7 +1,7 @@
 import React from 'react';
-import { Terminal, FileDown, Menu, Sparkles } from 'lucide-react';
+import { Terminal, FileDown } from 'lucide-react';
 
-export default function Navbar({ onDownloadCv }) {
+export default function Navbar({ lang, onLanguageChange, onDownloadCv, t }) {
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) {
@@ -26,41 +26,62 @@ export default function Navbar({ onDownloadCv }) {
           <ul className="nav-links">
             <li>
               <button type="button" className="nav-link-btn" onClick={() => scrollTo('hero')}>
-                Início
+                {t.nav.home}
               </button>
             </li>
             <li>
               <button type="button" className="nav-link-btn" onClick={() => scrollTo('focus-areas')}>
-                🎯 Especializações
+                {t.nav.focusAreas}
               </button>
             </li>
             <li>
               <button type="button" className="nav-link-btn" onClick={() => scrollTo('projects')}>
-                🚀 Projetos
+                {t.nav.projects}
               </button>
             </li>
             <li>
               <button type="button" className="nav-link-btn" onClick={() => scrollTo('stack')}>
-                ⚡ Stack
+                {t.nav.stack}
               </button>
             </li>
             <li>
               <button type="button" className="nav-link-btn" onClick={() => scrollTo('academic')}>
-                🎓 Percurso
+                {t.nav.academic}
               </button>
             </li>
             <li>
               <button type="button" className="nav-link-btn" onClick={() => scrollTo('contact')}>
-                📫 Contacto
+                {t.nav.contact}
               </button>
             </li>
           </ul>
         </nav>
 
         <div className="nav-cta">
+          {/* Language Switcher */}
+          <div className="lang-switcher" role="group" aria-label="Language selection">
+            <button
+              type="button"
+              className={`lang-btn ${lang === 'pt' ? 'active' : ''}`}
+              onClick={() => onLanguageChange('pt')}
+              title="Português"
+            >
+              <span className="lang-flag">🇵🇹</span> PT
+            </button>
+            <span className="lang-divider">|</span>
+            <button
+              type="button"
+              className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
+              onClick={() => onLanguageChange('en')}
+              title="English"
+            >
+              <span className="lang-flag">🇬🇧</span> EN
+            </button>
+          </div>
+
           <button type="button" className="btn btn-primary" onClick={onDownloadCv}>
             <FileDown size={17} />
-            <span>Descarregar CV</span>
+            <span>{t.nav.downloadCv}</span>
           </button>
         </div>
       </div>

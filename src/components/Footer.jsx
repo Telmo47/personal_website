@@ -1,7 +1,7 @@
 import React from 'react';
-import { ArrowUp, Terminal, Heart } from 'lucide-react';
+import { ArrowUp, Terminal } from 'lucide-react';
 
-export default function Footer() {
+export default function Footer({ t }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -11,11 +11,11 @@ export default function Footer() {
       <div className="container footer-inner">
         <div className="footer-copy">
           <Terminal size={16} color="#00f2fe" />
-          <span>© {new Date().getFullYear()} Telmo Botelho. Todos os direitos reservados.</span>
+          <span>{t.footer.text}</span>
         </div>
 
         <div className="footer-status-pill">
-          <span>Pronto para o mercado de trabalho 🚀</span>
+          <span>{t.footer.statusPill}</span>
         </div>
 
         <button
@@ -25,7 +25,7 @@ export default function Footer() {
           style={{ padding: '8px 14px', borderRadius: 'var(--radius-sm)', fontSize: '0.82rem', gap: '6px' }}
         >
           <ArrowUp size={14} />
-          <span>Voltar ao Topo</span>
+          <span>{t.footer.backToTop}</span>
         </button>
       </div>
     </footer>
