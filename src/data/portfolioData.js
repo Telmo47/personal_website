@@ -10,7 +10,7 @@ export const portfolioData = {
       academicDetail: "Todo o plano curricular concluído — apenas a aguardar o lançamento da última nota pelo docente. Disponibilidade total para início imediato.",
     },
     location: "Portugal (Remoto / Híbrido / Presencial)",
-    github: "https://github.com",
+    github: "https://github.com/Telmo47",
     linkedin: "https://linkedin.com",
     email: "contacto@engenheiro.dev",
     cvPdfPath: "/cv.pdf",
