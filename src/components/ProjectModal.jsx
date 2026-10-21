@@ -52,10 +52,10 @@ export default function ProjectModal({ project, onClose }) {
             ))}
           </div>
 
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', paddingTop: '16px', borderTop: '1px solid var(--border-subtle)' }}>
-            {project.githubUrl && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap', paddingTop: '16px', borderTop: '1px solid var(--border-subtle)' }}>
+            {project.hasGithub ? (
               <a
-                href={project.githubUrl}
+                href={project.githubUrl || 'https://github.com/Telmo47'}
                 target="_blank"
                 rel="noreferrer"
                 className="btn btn-secondary"
@@ -63,6 +63,10 @@ export default function ProjectModal({ project, onClose }) {
                 <GithubIcon size={16} />
                 <span>Ver Código no GitHub</span>
               </a>
+            ) : (
+              <span className="mono-tag" style={{ color: 'var(--text-muted)', fontSize: '0.84rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                🔒 Projeto sem repositório público (especificação sob consulta)
+              </span>
             )}
             {project.demoUrl && (
               <a

@@ -57,11 +57,11 @@ export default function ProjectsPipeline({ projects, onSelectProject }) {
         <div className="section-header">
           <div className="section-badge">
             <FolderGit2 size={16} />
-            <span>Showcase & Roadmap</span>
+            <span>Showcase & Projetos Reais</span>
           </div>
           <h2 className="section-title">Pipeline de Projetos</h2>
           <p className="section-subtitle">
-            Da conceção à produção: explora os projetos finalizados, o que estou ativamente a construir e o que se encontra no radar de engenharia.
+            Projetos práticos com foco em IA, sistemas distribuídos, arquitetura MVC e soluções IoT ciberfísicas.
           </p>
         </div>
 
@@ -83,8 +83,7 @@ export default function ProjectsPipeline({ projects, onSelectProject }) {
             onClick={() => setFilter('completed')}
           >
             <CheckCircle2 size={16} color="#34d399" />
-            <span>Concluídos (Feitos)</span>
-            <span className="tab-count">{countByCat.completed}</span>
+            <span>Concluídos ({countByCat.completed})</span>
           </button>
 
           <button
@@ -93,19 +92,19 @@ export default function ProjectsPipeline({ projects, onSelectProject }) {
             onClick={() => setFilter('in_progress')}
           >
             <Clock size={16} color="#fbbf24" />
-            <span>Em Desenvolvimento</span>
-            <span className="tab-count">{countByCat.in_progress}</span>
+            <span>Em Desenvolvimento ({countByCat.in_progress})</span>
           </button>
 
-          <button
-            type="button"
-            className={`filter-tab-btn ${filter === 'backlog' ? 'active' : ''}`}
-            onClick={() => setFilter('backlog')}
-          >
-            <Compass size={16} color="#a5b4fc" />
-            <span>No Radar (Backlog)</span>
-            <span className="tab-count">{countByCat.backlog}</span>
-          </button>
+          {countByCat.backlog > 0 && (
+            <button
+              type="button"
+              className={`filter-tab-btn ${filter === 'backlog' ? 'active' : ''}`}
+              onClick={() => setFilter('backlog')}
+            >
+              <Compass size={16} color="#a5b4fc" />
+              <span>No Radar ({countByCat.backlog})</span>
+            </button>
+          )}
         </div>
 
         {/* Grelha de Cartões de Projetos */}
@@ -119,7 +118,6 @@ export default function ProjectsPipeline({ projects, onSelectProject }) {
                 </span>
 
                 <h3 className="project-title">{project.title}</h3>
-                <p className="project-tagline">{project.tagline}</p>
                 <p className="project-desc">{project.description}</p>
               </div>
 
@@ -134,9 +132,9 @@ export default function ProjectsPipeline({ projects, onSelectProject }) {
 
                 <div className="project-card-footer">
                   <div className="project-links">
-                    {project.githubUrl && (
+                    {project.hasGithub ? (
                       <a
-                        href={project.githubUrl}
+                        href={project.githubUrl || 'https://github.com/Telmo47'}
                         target="_blank"
                         rel="noreferrer"
                         className="icon-link"
@@ -145,7 +143,18 @@ export default function ProjectsPipeline({ projects, onSelectProject }) {
                         <GithubIcon size={16} />
                         <span>Código</span>
                       </a>
+                    ) : (
+                      <button
+                        type="button"
+                        className="btn-architecture"
+                        onClick={() => onSelectProject(project)}
+                        title="Ver Arquitetura e Detalhes do Sistema"
+                      >
+                        <Layers size={15} />
+                        <span>Ver Arquitetura</span>
+                      </button>
                     )}
+
                     {project.demoUrl && (
                       <a
                         href={project.demoUrl}
@@ -160,14 +169,16 @@ export default function ProjectsPipeline({ projects, onSelectProject }) {
                     )}
                   </div>
 
-                  <button
-                    type="button"
-                    className="btn-details"
-                    onClick={() => onSelectProject(project)}
-                  >
-                    <Info size={15} />
-                    <span>Detalhes</span>
-                  </button>
+                  {project.hasGithub && (
+                    <button
+                      type="button"
+                      className="btn-details"
+                      onClick={() => onSelectProject(project)}
+                    >
+                      <Info size={15} />
+                      <span>Detalhes</span>
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
