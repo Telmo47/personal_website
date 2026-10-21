@@ -126,6 +126,23 @@ export const portfolioData = {
     },
     {
       id: 5,
+      title: "Formify",
+      category: "completed",
+      categoryLabel: "Concluído",
+      hasGithub: true,
+      githubUrl: "https://github.com/Telmo47",
+      demoUrl: "",
+      description:
+        "Plataforma de criação, edição e gestão dinâmica de formulários web. Concebida com a função de treinar e aplicar a metodologia ágil SCRUM, combinando interface reativa em React com backend em C#.",
+      tags: ["React", "JavaScript", "C#", "HTML/CSS", "SCRUM", "Markdown"],
+      highlights: [
+        "Gestão de ciclo de vida de desenvolvimento e sprints orientado à metodologia ágil SCRUM",
+        "Interface moderna e intuitiva em React para geração, personalização e preenchimento de formulários",
+        "Arquitetura de backend e processamento estruturado de dados em C#",
+      ],
+    },
+    {
+      id: 6,
       title: "Portfólio Interativo & AI-Assisted Dev",
       category: "in_progress",
       categoryLabel: "Em Desenvolvimento",
