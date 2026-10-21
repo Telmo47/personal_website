@@ -85,14 +85,14 @@ export default function Hero({ data, onDownloadCv }) {
                 <button
                   type="button"
                   className="quickhub-btn"
-                  onClick={() => scrollTo('rpg-stats')}
+                  onClick={() => scrollTo('focus-areas')}
                 >
                   <div className="quickhub-icon-wrap">
-                    <Gamepad2 size={20} />
+                    <Sparkles size={20} />
                   </div>
                   <div className="quickhub-text">
-                    <span className="quickhub-title">Ficha de Habilidades</span>
-                    <span className="quickhub-desc">Barras de RPG estilo videojogo</span>
+                    <span className="quickhub-title">Áreas de Especialização</span>
+                    <span className="quickhub-desc">IA, Sistemas, Ágil & Redes</span>
                   </div>
                 </button>
 

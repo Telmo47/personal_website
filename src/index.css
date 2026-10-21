@@ -613,171 +613,113 @@ body {
 }
 
 /* =========================================================
-   RPG STATS / FICHA DE PERSONAGEM
+   FOCUS AREAS / ÁREAS DE ESPECIALIZAÇÃO
    ========================================================= */
-.rpg-section {
+.focus-section {
   padding: 90px 0 60px;
 }
 
-.rpg-card-container {
-  padding: 36px;
-  position: relative;
-  overflow: hidden;
-}
-
-.rpg-header-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 20px;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.rpg-player-info {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.rpg-class-badge {
-  font-family: var(--font-mono);
-  background: rgba(157, 78, 221, 0.15);
-  border: 1px solid rgba(157, 78, 221, 0.35);
-  color: #c084fc;
-  padding: 4px 10px;
-  border-radius: var(--radius-sm);
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.rpg-overall-power {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.power-counter-box {
-  background: rgba(0, 242, 254, 0.08);
-  border: 1px solid rgba(0, 242, 254, 0.25);
-  padding: 8px 18px;
-  border-radius: var(--radius-md);
-  text-align: right;
-}
-
-.power-val {
-  font-family: var(--font-mono);
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--accent-cyan);
-}
-
-.power-lbl {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-}
-
-.rpg-bars-grid {
+.focus-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 28px;
 }
 
-.rpg-bar-item {
-  background: rgba(10, 14, 24, 0.6);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  padding: 18px 20px;
+.focus-card {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: var(--radius-md);
+  position: relative;
+  overflow: hidden;
   transition: var(--transition);
 }
 
-.rpg-bar-item:hover {
-  border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(18, 24, 40, 0.8);
-  transform: translateY(-2px);
+.focus-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.7);
 }
 
-.bar-top-row {
+.focus-card-header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 18px;
 }
 
-.bar-label-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.bar-icon {
-  width: 28px;
-  height: 28px;
+.focus-icon-wrap {
+  width: 48px;
+  height: 48px;
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent-cyan);
+  flex-shrink: 0;
+  transition: var(--transition);
 }
 
-.bar-name {
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: -0.01em;
+.focus-card:hover .focus-icon-wrap {
+  transform: scale(1.08) rotate(2deg);
 }
 
-.bar-score-group {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-  font-family: var(--font-mono);
-}
-
-.score-val {
+.focus-card-title {
   font-size: 1.25rem;
   font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  color: var(--text-primary);
 }
 
-.score-max {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-
-.bar-level-title {
-  font-size: 0.75rem;
-  padding: 2px 8px;
-  border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.06);
+.focus-card-desc {
+  font-size: 0.95rem;
   color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+
+.focus-tech-block {
+  padding-top: 18px;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: auto;
+}
+
+.focus-tech-label {
+  display: block;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  font-weight: 700;
+  margin-bottom: 10px;
   font-family: var(--font-mono);
 }
 
-.bar-track {
-  width: 100%;
-  height: 10px;
-  background: #111827;
-  border-radius: var(--radius-full);
-  overflow: hidden;
-  margin: 10px 0 8px;
-  position: relative;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+.focus-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.bar-fill {
-  height: 100%;
-  border-radius: var(--radius-full);
-  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 0 12px currentColor;
-}
-
-.bar-desc {
+.focus-tag-pill {
+  font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--text-secondary);
-  line-height: 1.4;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+  transition: var(--transition);
+}
+
+.focus-tag-pill:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
 }
 
 /* =========================================================
@@ -1381,7 +1323,7 @@ body {
   .quickhub-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .rpg-bars-grid {
+  .focus-grid {
     grid-template-columns: 1fr;
   }
 }

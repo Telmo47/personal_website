@@ -30,8 +30,8 @@ export default function Navbar({ onDownloadCv }) {
               </button>
             </li>
             <li>
-              <button type="button" className="nav-link-btn" onClick={() => scrollTo('rpg-stats')}>
-                🎮 Ficha RPG
+              <button type="button" className="nav-link-btn" onClick={() => scrollTo('focus-areas')}>
+                🎯 Especializações
               </button>
             </li>
             <li>

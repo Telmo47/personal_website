@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { portfolioData } from './data/portfolioData';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import RpgStats from './components/RpgStats';
+import FocusAreas from './components/FocusAreas';
 import ProjectsPipeline from './components/ProjectsPipeline';
 import TechStack from './components/TechStack';
 import AcademicJourney from './components/AcademicJourney';
@@ -63,8 +63,8 @@ export default function App() {
         {/* Página Principal / Hero & Hub de Navegação */}
         <Hero data={portfolioData} onDownloadCv={handleDownloadCv} />
 
-        {/* Ficha de Habilidades estilo RPG / Videojogo */}
-        <RpgStats stats={portfolioData.rpgStats} />
+        {/* Áreas de Especialização & Domínio Técnico */}
+        <FocusAreas areas={portfolioData.focusAreas} />
 
         {/* Pipeline de Projetos (Concluídos | Em Curso | No Radar) */}
         <ProjectsPipeline
