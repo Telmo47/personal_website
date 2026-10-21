@@ -62,10 +62,13 @@ export default function Contact({ personal, onDownloadCv }) {
               <span>LinkedIn</span>
             </a>
 
-            <div className="contact-item-btn" style={{ cursor: 'default' }}>
+            <a
+              href={`mailto:${personal.email}`}
+              className="contact-item-btn"
+            >
               <Mail size={18} color="#00f2fe" />
               <span>{personal.email}</span>
-            </div>
+            </a>
           </div>
         </div>
       </div>

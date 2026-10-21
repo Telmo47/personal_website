@@ -17,7 +17,7 @@ export default function Navbar({ onDownloadCv }) {
             <Terminal size={20} />
           </div>
           <div className="brand-title">
-            <span className="brand-name">Engenheiro.dev</span>
+            <span className="brand-name">Telmo.dev</span>
             <span className="brand-sub">Portfolio // 2026</span>
           </div>
         </a>

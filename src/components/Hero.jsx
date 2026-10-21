@@ -43,7 +43,7 @@ export default function Hero({ data, onDownloadCv }) {
             </h1>
 
             <p className="hero-description">
-              Olá! Sou <strong>{data.personal.name}</strong>. Foco-me em desenvolvimento de software moderno,
+              Olá! Sou o <strong>Telmo Botelho</strong>, Engenheiro Informático. Foco-me em desenvolvimento de software moderno,
               arquiteturas limpas e resolução de problemas técnicos complexos. Formação quase 100% concluída, com prontidão imediata para integrar equipas de engenharia.
             </p>
 

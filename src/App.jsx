@@ -78,8 +78,8 @@ export default function App() {
         {/* Percurso Académico & Estado Atual */}
         <AcademicJourney timeline={portfolioData.academicTimeline} />
 
-        {/* Notas Técnicas / Dev Blog */}
-        <DevNotes notes={portfolioData.devNotes} />
+        {/* Notas Técnicas / Dev Blog (Oculto temporariamente para adição posterior) */}
+        {/* <DevNotes notes={portfolioData.devNotes} /> */}
 
         {/* Contacto & Download do CV */}
         <Contact personal={portfolioData.personal} onDownloadCv={handleDownloadCv} />

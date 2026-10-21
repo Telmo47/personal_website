@@ -11,7 +11,7 @@ export default function Footer() {
       <div className="container footer-inner">
         <div className="footer-copy">
           <Terminal size={16} color="#00f2fe" />
-          <span>© {new Date().getFullYear()} Engenheiro Informático. Todos os direitos reservados.</span>
+          <span>© {new Date().getFullYear()} Telmo Botelho. Todos os direitos reservados.</span>
         </div>
 
         <div className="footer-status-pill">

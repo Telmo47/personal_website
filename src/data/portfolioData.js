@@ -1,6 +1,6 @@
 export const portfolioData = {
   personal: {
-    name: "Engenheiro Informático",
+    name: "Telmo Botelho",
     role: "Software Engineer | Full-Stack & Systems",
     tagline: "Engenharia de software focada em soluções robustas, código limpo e arquiteturas modernas.",
     status: {
@@ -11,8 +11,8 @@ export const portfolioData = {
     },
     location: "Portugal (Remoto / Híbrido / Presencial)",
     github: "https://github.com/Telmo47",
-    linkedin: "https://linkedin.com",
-    email: "contacto@engenheiro.dev",
+    linkedin: "https://www.linkedin.com/in/telmo-botelho-56614736b/?isSelfProfile=true",
+    email: "telmobotelho4@gmail.com",
     cvPdfPath: "/cv.pdf",
   },
 
