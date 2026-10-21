@@ -66,7 +66,7 @@ export default function Navbar({ lang, onLanguageChange, onDownloadCv, t }) {
               onClick={() => onLanguageChange('pt')}
               title="Português"
             >
-              <span className="lang-flag">🇵🇹</span> PT
+              PT
             </button>
             <span className="lang-divider">|</span>
             <button
@@ -75,7 +75,7 @@ export default function Navbar({ lang, onLanguageChange, onDownloadCv, t }) {
               onClick={() => onLanguageChange('en')}
               title="English"
             >
-              <span className="lang-flag">🇬🇧</span> EN
+              EN
             </button>
           </div>
 
