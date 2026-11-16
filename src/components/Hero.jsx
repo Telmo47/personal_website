@@ -6,7 +6,6 @@ import {
   Mail,
   FileDown,
   Sparkles,
-  Clock,
   Code2,
 } from 'lucide-react';
 
@@ -30,7 +29,7 @@ export default function Hero({ data, onDownloadCv, t }) {
                 <span>{data.personal.status.label}</span>
               </div>
               <div className="academic-badge">
-                <Clock size={14} />
+                <GraduationCap size={14} />
                 <span>{data.personal.status.academicStage}</span>
               </div>
             </div>
@@ -166,7 +165,7 @@ export default function Hero({ data, onDownloadCv, t }) {
 
             <div className="hero-stats-mini">
               <div className="mini-stat-item">
-                <div className="mini-stat-num">99%</div>
+                <div className="mini-stat-num">100%</div>
                 <div className="mini-stat-lbl">{t.hero.statDegree}</div>
               </div>
               <div className="mini-stat-item">
@@ -182,7 +181,7 @@ export default function Hero({ data, onDownloadCv, t }) {
             {/* Banner de Explicação de Estado Académico */}
             <div className="academic-notice-card">
               <div className="academic-notice-icon">
-                <Clock size={20} />
+                <GraduationCap size={20} />
               </div>
               <div className="academic-notice-content">
                 <h4>{t.hero.academicCardTitle}</h4>
