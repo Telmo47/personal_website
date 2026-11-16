@@ -148,8 +148,8 @@ export const portfolioData = {
       {
         id: 7,
         title: "CRM - Gestor de Candidaturas (JobTracker)",
-        category: "completed",
-        categoryLabel: "Concluído",
+        category: "in_progress",
+        categoryLabel: "Em Desenvolvimento",
         hasGithub: true,
         githubUrl: "https://github.com/Telmo47/CRM",
         demoUrl: "",
@@ -417,8 +417,8 @@ export const portfolioData = {
       {
         id: 7,
         title: "CRM - Job Application Tracker (JobTracker)",
-        category: "completed",
-        categoryLabel: "Completed",
+        category: "in_progress",
+        categoryLabel: "In Progress",
         hasGithub: true,
         githubUrl: "https://github.com/Telmo47/CRM",
         demoUrl: "",
